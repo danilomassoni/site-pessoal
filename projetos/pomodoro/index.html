@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro | Danilo Massoni</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Pomodoro Timer</h1>
+        
+        <div class="setup-container">
+            <div class="input-group">
+                <label for="numPomodoros">Número de Pomodoros:</label>
+                <input type="number" id="numPomodoros" min="1" value="4">
+            </div>
+            
+            <div class="input-group">
+                <label for="workTime">Minutos de Trabalho:</label>
+                <input type="number" id="workTime" min="1" value="25">
+            </div>
+            
+            <div class="input-group">
+                <label for="breakTime">Minutos de Descanso:</label>
+                <input type="number" id="breakTime" min="1" value="5">
+            </div>
+            
+            <button id="startButton">Começar</button>
+        </div>
+
+        <div class="timer-container">
+            <div class="timer">25:00</div>
+            <div class="status">Trabalho</div>
+            <div class="progress">Pomodoro 1 de 4</div>
+            <div class="controls">
+                <button id="pauseButton" disabled>Pausar</button>
+                <button id="resetButton" disabled>Reiniciar</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
