@@ -1,0 +1,105 @@
+.hero-artigos {
+    text-align: center;
+    padding: 4rem 0;
+    background-color: var(--pastel-green);
+    margin: -2rem -2rem 2rem -2rem;
+}
+
+.hero-artigos h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: var(--black);
+}
+
+.articles-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.filter-button {
+    padding: 0.5rem 1.5rem;
+    border: 1px solid var(--pastel-green);
+    background: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.filter-button.active,
+.filter-button:hover {
+    background-color: var(--pastel-green);
+    color: var(--black);
+}
+
+.article-card {
+    background-color: var(--white);
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.article-tag {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    background-color: var(--pastel-green);
+    border-radius: 15px;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.article-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--black);
+}
+
+.article-meta {
+    display: flex;
+    gap: 1.5rem;
+    color: #666;
+    font-size: 0.9rem;
+    margin: 1rem 0;
+}
+
+.read-more {
+    display: inline-block;
+    color: var(--pastel-green);
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 1rem;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .hero-artigos h1 {
+        font-size: 2.5rem;
+    }
+
+    .articles-filters {
+        flex-direction: row;
+        padding: 0 1rem;
+    }
+
+    .filter-button {
+        font-size: 0.8rem;
+        padding: 0.4rem 1rem;
+    }
+
+    .article-card {
+        margin: 1rem;
+    }
+} 

@@ -1,0 +1,204 @@
+.hero-mentoria {
+    text-align: center;
+    padding: 6rem 0;
+    background-color: var(--pastel-green);
+    margin: -2rem -2rem 2rem -2rem;
+}
+
+.hero-mentoria h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: var(--black);
+}
+
+.about-mentoria {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    text-align: center;
+}
+
+.about-mentoria p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+.packages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.package-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 2rem;
+    position: relative;
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+}
+
+.package-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.package-card.featured {
+    border: 2px solid var(--pastel-green);
+}
+
+.featured-label {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--pastel-green);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 1rem 0;
+    color: var(--pastel-green);
+    text-align: center;
+}
+
+.features {
+    list-style: none;
+    margin: 1.5rem 0;
+    padding: 0;
+}
+
+.features li {
+    margin: 0.8rem 0;
+    color: #666;
+}
+
+.benefits {
+    margin-top: 6rem;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.benefit-card {
+    padding: 2rem;
+    border-radius: 10px;
+    background: var(--white);
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-color: var(--pastel-green);
+}
+
+.benefit-card:hover h3 {
+    color: var(--pastel-green);
+}
+
+.benefit-card h3 {
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .hero-mentoria h1 {
+        font-size: 2.5rem;
+    }
+    
+    .packages-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .package-card {
+        margin: 0 1rem;
+    }
+} 
+
+.package-card.custom {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(145deg, var(--white) 0%, #f8f8f8 100%);
+    border: 1px solid var(--pastel-green);
+}
+
+.package-card.custom .price {
+    order: 1;
+    margin-top: auto;
+    padding-top: 1rem;
+    font-size: 1.8rem;
+    color: var(--black);
+}
+
+.package-card.custom .features {
+    flex-grow: 1;
+}
+
+.custom-label {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--pastel-green);
+    padding: 0.3rem 1rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.custom-cta {
+    order: 2;
+    background: var(--black);
+    color: var(--white);
+}
+
+.custom-cta:hover {
+    background: var(--pastel-green);
+    color: var(--black);
+} 
+
+@media (max-width: 1024px) {
+    .packages-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        justify-content: center;
+    }
+} 
+
+.custom-mentoria {
+    text-align: center;
+    margin: 4rem auto 2rem;
+    max-width: 1200px;
+    padding: 0 2rem;
+}
+
+.custom-mentoria .custom-cta {
+    font-size: 1.2rem;
+    padding: 1.2rem 2.5rem;
+    background: var(--black);
+    color: var(--white);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.custom-mentoria .custom-cta:hover {
+    background: var(--pastel-green);
+    color: var(--black);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+} 
