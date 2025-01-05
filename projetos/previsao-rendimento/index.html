@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previsão de Rendimento Escolar</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Previsão de Rendimento Escolar</h1>
+        
+        <div class="input-container">
+            <!-- Etapa 1: Tipo de Período -->
+            <div class="input-step" id="step1">
+                <h2>Como são fechadas suas notas?</h2>
+                <select id="tipoPeriodo" onchange="mostrarProximaEtapa('step2')">
+                    <option value="">Selecione...</option>
+                    <option value="bimestral">Bimestral (4 fechamentos)</option>
+                    <option value="trimestral">Trimestral (3 fechamentos)</option>
+                    <option value="quadrimestral">Quadrimestral (3 fechamentos)</option>
+                    <option value="semestral">Semestral (2 fechamentos)</option>
+                </select>
+            </div>
+
+            <!-- Etapa 2: Período Atual -->
+            <div class="input-step hidden" id="step2">
+                <h2>Em qual fechamento você está?</h2>
+                <select id="periodoAtual" onchange="mostrarProximaEtapa('step3')">
+                    <!-- Opções serão preenchidas via JavaScript -->
+                </select>
+            </div>
+
+            <!-- Etapa 3: Notas e Frequência -->
+            <div class="input-step hidden" id="step3">
+                <h2>Insira suas notas e frequência atuais</h2>
+                <div id="notas-container">
+                    <!-- Campos de notas serão gerados dinamicamente -->
+                </div>
+                <button onclick="calcular()">Calcular</button>
+            </div>
+        </div>
+
+        <div id="resultado" class="resultado hidden"></div>
+        <div class="graficos-container">
+            <div class="grafico">
+                <canvas id="graficoNotas" width="400" height="200"></canvas>
+            </div>
+            <div class="grafico">
+                <canvas id="graficoFrequencia" width="400" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
