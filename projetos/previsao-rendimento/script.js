@@ -169,6 +169,7 @@ function calcular() {
 
     document.getElementById('resultado').innerHTML = mensagem;
     document.getElementById('resultado').classList.remove('hidden');
+    document.querySelector('.graficos-container').style.display = 'flex';
     
     atualizarGraficos(mediaAtual, notaMinimaNecessaria, notaIdealNecessaria, frequenciaMedia, frequenciaNecessaria);
 }
@@ -348,5 +349,100 @@ function atualizarGraficos(notaAtual, notaMinima, notaIdeal, frequenciaMedia, fr
                 }
             }
         }
+    });
+}
+
+function exportarPDF() {
+    const { jsPDF } = window.jspdf;
+
+    // Criar elemento temporário para o relatório
+    const relatorio = document.createElement('div');
+    relatorio.style.width = '600px';
+    relatorio.style.padding = '20px';
+    relatorio.style.backgroundColor = 'white';
+    
+    // Adicionar conteúdo ao relatório
+    relatorio.innerHTML = `
+        <div style="text-align: center; margin-bottom: 20px;">
+            <h2 style="color: #333;">Relatório de Rendimento Escolar</h2>
+            <p style="color: #666;">Data: ${new Date().toLocaleDateString()}</p>
+        </div>
+        <div style="margin-bottom: 20px;">
+            ${document.getElementById('resultado').innerHTML}
+        </div>
+    `;
+
+    document.body.appendChild(relatorio);
+
+    // Criar o PDF
+    const doc = new jsPDF('p', 'pt', 'a4');
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const pageHeight = doc.internal.pageSize.getHeight();
+
+    // Configurações para os gráficos - dimensões reduzidas
+    const chartWidth = 600;
+    const chartHeight = 300;
+    const graficoNotas = document.getElementById('graficoNotas');
+    const graficoFreq = document.getElementById('graficoFrequencia');
+
+    // Ajustar temporariamente o tamanho dos gráficos
+    graficoNotas.style.width = chartWidth + 'px';
+    graficoNotas.style.height = chartHeight + 'px';
+    graficoFreq.style.width = chartWidth + 'px';
+    graficoFreq.style.height = chartHeight + 'px';
+
+    // Capturar o conteúdo em canvas
+    html2canvas(relatorio, {
+        scale: 2,
+        useCORS: true,
+        logging: false
+    }).then(canvas => {
+        // Adicionar o relatório
+        const imgData = canvas.toDataURL('image/jpeg', 1.0);
+        const relatorioHeight = Math.min(canvas.height * (pageWidth / canvas.width), pageHeight - 40);
+        const marginX = (pageWidth - (pageWidth - 80)) / 2; // Centralizar horizontalmente
+        doc.addImage(imgData, 'JPEG', marginX, 20, pageWidth - 80, relatorioHeight);
+
+        // Capturar e adicionar os gráficos
+        html2canvas(graficoNotas, {
+            scale: 2,
+            useCORS: true,
+            logging: false
+        }).then(canvasNotas => {
+            doc.addPage();
+            const notasData = canvasNotas.toDataURL('image/jpeg', 1.0);
+            const graphHeight = (pageWidth - 80) * (chartHeight / chartWidth);
+            const graphY = (pageHeight - (graphHeight * 2 + 40)) / 2; // Centralizar verticalmente
+            doc.addImage(notasData, 'JPEG', marginX, graphY, pageWidth - 80, graphHeight);
+
+            html2canvas(graficoFreq, {
+                scale: 2,
+                useCORS: true,
+                logging: false
+            }).then(canvasFreq => {
+                const freqData = canvasFreq.toDataURL('image/jpeg', 1.0);
+                doc.addImage(freqData, 'JPEG', marginX, graphY + graphHeight + 40, pageWidth - 80, graphHeight);
+
+                // Restaurar tamanhos originais dos gráficos
+                graficoNotas.style.width = '';
+                graficoNotas.style.height = '';
+                graficoFreq.style.width = '';
+                graficoFreq.style.height = '';
+
+                // Salvar o PDF
+                doc.save('relatorio-rendimento-escolar.pdf');
+                document.body.removeChild(relatorio);
+            });
+        });
+    }).catch(error => {
+        // Restaurar tamanhos originais em caso de erro
+        graficoNotas.style.width = '';
+        graficoNotas.style.height = '';
+        graficoFreq.style.width = '';
+        graficoFreq.style.height = '';
+
+        console.error('Erro ao gerar PDF:', error);
+        alert('Erro ao gerar o PDF. Por favor, tente novamente.');
+        document.body.removeChild(relatorio);
     });
 } 
