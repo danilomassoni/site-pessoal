@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Checklist</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Gerador de Checklist</h1>
+        
+        <div class="input-container">
+            <div class="project-info">
+                <input type="text" id="projectName" placeholder="Nome do Projeto" class="project-title">
+                
+                <!-- Gerenciador de Classes -->
+                <div class="class-manager">
+                    <h3>Gerenciar Classes</h3>
+                    <div class="class-input">
+                        <input type="text" id="newClass" placeholder="Nova classe">
+                        <button onclick="addClass()" class="add-btn">Adicionar Classe</button>
+                    </div>
+                    <div class="classes-list" id="classesList"></div>
+                </div>
+
+                <!-- Input de Itens com Seleção de Classe -->
+                <div class="item-input">
+                    <select id="itemClass" class="class-select">
+                        <option value="">Selecione uma classe</option>
+                    </select>
+                    <input type="text" id="newItem" placeholder="Novo item">
+                    <button onclick="addItem()" class="add-btn">Adicionar</button>
+                </div>
+            </div>
+
+            <div class="checklist-container">
+                <ul id="itemsList"></ul>
+            </div>
+
+            <div class="actions">
+                <button onclick="exportPDF()" class="export-btn">Exportar PDF</button>
+                <button onclick="clearList()" class="clear-btn">Limpar Lista</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
