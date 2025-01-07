@@ -684,3 +684,30 @@ footer {
     display: flex;
     align-items: center;
 } 
+
+.article-tag {
+    display: inline-block;
+    background-color: var(--pastel-green);
+    color: var(--black);
+    padding: 0.3rem 1rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.article-card {
+    padding: 1.5rem;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.article-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--black);
+    line-height: 1.4;
+} 

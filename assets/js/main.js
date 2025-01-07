@@ -172,7 +172,12 @@ function createArticleCard(article) {
     const card = document.createElement('article');
     card.className = 'article-card';
     
+    // Pegar a primeira tag do artigo, se existir
+    const tag = article.categories.length > 0 ? article.categories[0] : '';
+    const tagHtml = tag ? `<div class="article-tag">${tag}</div>` : '';
+    
     card.innerHTML = `
+        ${tagHtml}
         <h3>${article.title}</h3>
         <a href="${article.link}" class="read-more" target="_blank">Ler no Medium →</a>
     `;
