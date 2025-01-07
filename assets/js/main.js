@@ -166,3 +166,63 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Função para criar o card de artigo
+function createArticleCard(article) {
+    const card = document.createElement('article');
+    card.className = 'article-card';
+    
+    card.innerHTML = `
+        <h3>${article.title}</h3>
+        <a href="${article.link}" class="read-more" target="_blank">Ler no Medium →</a>
+    `;
+    
+    return card;
+}
+
+async function fetchMediumPosts() {
+    try {
+        const mediumUser = '@danilomassoni';
+        const rssUrl = `https://medium.com/feed/${mediumUser}`;
+        const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`);
+        const data = await response.json();
+
+        if (data.status === 'ok') {
+            const articles = data.items;
+            const articlesGrid = document.querySelector('.articles-grid');
+            
+            if (articlesGrid) {
+                articlesGrid.innerHTML = '';
+                
+                const isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('index.html');
+                const articlesToShow = isHomePage ? articles.slice(0, 3) : articles;
+                
+                articlesToShow.forEach(article => {
+                    const card = createArticleCard(article);
+                    articlesGrid.appendChild(card);
+                });
+                
+                if (isHomePage) {
+                    const seeMoreLink = document.createElement('a');
+                    seeMoreLink.href = 'pages/artigos.html';
+                    seeMoreLink.textContent = 'Leia outros artigos';
+                    seeMoreLink.className = 'see-more-link';
+                    articlesGrid.appendChild(seeMoreLink);
+                }
+            }
+        }
+    } catch (error) {
+        console.error('Erro ao buscar artigos do Medium:', error);
+    }
+}
+
+// Carregar artigos quando a página carregar
+document.addEventListener('DOMContentLoaded', function() {
+    // Verificar se estamos na página inicial ou na página de artigos
+    const isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('index.html');
+    const isArticlesPage = window.location.pathname.includes('artigos.html');
+    
+    if (isHomePage || isArticlesPage) {
+        fetchMediumPosts();
+    }
+});

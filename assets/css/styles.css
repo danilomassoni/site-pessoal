@@ -105,27 +105,30 @@ main {
 
 /* Articles Section */
 .featured-articles {
-    margin-top: 4rem;
+    margin: 6rem 0;
+}
+
+.featured-articles h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2rem;
 }
 
 .articles-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .article-card {
     padding: 1.5rem;
     border: 1px solid #eee;
-    border-radius: 5px;
+    border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: var(--white);
-    height: 100%;
     display: flex;
     flex-direction: column;
-    position: relative;
-    overflow: hidden;
+    justify-content: space-between;
 }
 
 .article-card:hover {
@@ -135,57 +138,38 @@ main {
 }
 
 .article-card h3 {
-    margin-bottom: 1rem;
     font-size: 1.2rem;
-    color: var(--black);
-    transition: color 0.3s ease;
-}
-
-.article-card:hover h3 {
-    color: var(--pastel-green);
-}
-
-.article-card p {
-    color: #666;
-    flex-grow: 1;
     margin-bottom: 1rem;
+    color: var(--black);
+    line-height: 1.4;
 }
 
 .read-more {
-    display: inline-block;
     color: var(--pastel-green);
     text-decoration: none;
     font-weight: 500;
     transition: transform 0.3s ease;
-    position: relative;
+    display: inline-block;
+    margin-top: auto;
 }
 
 .read-more:hover {
     transform: translateX(5px);
 }
 
-.read-more::after {
-    content: '→';
-    margin-left: 5px;
-    transition: transform 0.3s ease;
-    display: inline-block;
-}
-
-.read-more:hover::after {
-    transform: translateX(3px);
-}
-
-.articles-grid > a {
+.see-more-link {
+    display: block;
     text-align: center;
-    margin-top: 2rem;
-    color: var(--pastel-green);
+    color: var(--black);
     text-decoration: none;
     font-weight: 500;
-    transition: opacity 0.3s ease;
+    font-size: 1.1rem;
+    margin-top: 2rem;
+    transition: color 0.3s ease;
 }
 
-.articles-grid > a:hover {
-    opacity: 0.8;
+.see-more-link:hover {
+    color: var(--pastel-green);
 }
 
 /* Footer */
@@ -670,4 +654,33 @@ footer {
         grid-template-columns: 1fr;
         padding: 0 1rem;
     }
+} 
+
+/* Loading state para artigos */
+.articles-grid.loading {
+    position: relative;
+    min-height: 200px;
+}
+
+.articles-grid.loading::after {
+    content: 'Carregando artigos...';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #666;
+}
+
+/* Ajustes para meta informações */
+.article-meta {
+    display: flex;
+    gap: 1rem;
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.article-meta span {
+    display: flex;
+    align-items: center;
 } 

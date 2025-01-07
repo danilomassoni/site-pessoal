@@ -102,4 +102,45 @@
     .article-card {
         margin: 1rem;
     }
+}
+
+/* Estilos específicos para cards na página de artigos */
+.articles-content .article-card {
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.articles-content .article-description {
+    margin: 1rem 0;
+    line-height: 1.6;
+    color: #444;
+}
+
+.articles-content .article-tag {
+    display: inline-block;
+    background-color: var(--pastel-green);
+    color: var(--black);
+    padding: 0.3rem 1rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.articles-content .article-meta {
+    margin: 1rem 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.articles-content .read-more {
+    display: inline-block;
+    color: var(--pastel-green);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: transform 0.3s ease;
+}
+
+.articles-content .read-more:hover {
+    transform: translateX(5px);
 } 
