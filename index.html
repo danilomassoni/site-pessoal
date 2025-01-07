@@ -11,17 +11,19 @@
     <header>
         <nav>
             <div class="logo">
-                <a href="index.html">daniloMassoni</a>
+                <a href="index.html">danilomassoni</a>
             </div>
-            <button class="menu-button">
-                <span class="hamburger"></span>
-            </button>
-            <div class="nav-links">
-                <a href="index.html">Início</a>
-                <a href="pages/mentoria.html">Mentoria</a>
-                <a href="pages/sobre.html">Me conheça</a>
-                <a href="pages/artigos.html">Artigos</a>
-                <a href="pages/projetos.html">Projetos</a>
+            <div class="nav-right">
+                <div class="nav-links">
+                    <a href="index.html">Início</a>
+                    <a href="pages/mentoria.html">Mentoria</a>
+                    <a href="pages/sobre.html">Me conheça</a>
+                    <a href="pages/artigos.html">Artigos</a>
+                    <a href="pages/projetos.html">Projetos</a>
+                </div>
+                <button class="menu-button">
+                    <span class="hamburger"></span>
+                </button>
             </div>
         </nav>
     </header>
@@ -52,6 +54,51 @@
                     <a href="https://medium.com/@danilomassoni/surpresa-o-melhor-aplicativo-de-produtividade-j%C3%A1-est%C3%A1-instalado-no-seu-windows-915d651e789e" class="read-more">Ler mais →</a>
                 </article>
                 <a href="pages/artigos.html">Leia outros artigos</a>
+            </div>
+        </section>
+
+        <section class="featured-projects">
+            <h2>Projetos em Destaque</h2>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <div class="project-tag">Produtividade</div>
+                    <h3>Pomodoro Timer</h3>
+                    <p>Timer pomodoro para gerenciar melhor seu tempo de estudo e trabalho.</p>
+                    <div class="project-tech">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <a href="projetos/pomodoro/index.html" class="project-link">Ver projeto →</a>
+                </article>
+                
+                <article class="project-card">
+                    <div class="project-tag">Educação</div>
+                    <h3>Previsão de Rendimento</h3>
+                    <p>Ferramenta para análise e previsão de rendimento escolar.</p>
+                    <div class="project-tech">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>Chart.js</span>
+                    </div>
+                    <a href="projetos/previsao-rendimento/index.html" class="project-link">Ver projeto →</a>
+                </article>
+                
+                <article class="project-card">
+                    <div class="project-tag">Produtividade</div>
+                    <h3>Gerador de Checklist</h3>
+                    <p>Crie e exporte checklists personalizados em PDF para seus projetos.</p>
+                    <div class="project-tech">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <a href="projetos/checklist-generator/index.html" class="project-link">Ver projeto →</a>
+                </article>
+            </div>
+            <div class="see-more">
+                <a href="pages/projetos.html" class="see-more-link">Ver todos os projetos →</a>
             </div>
         </section>
 
@@ -142,6 +189,9 @@
             <p>© 2024 Danilo Massoni. Todos os direitos reservados.</p>
         </div>
     </footer>
+    <button id="backToTop" class="back-to-top" aria-label="Voltar ao topo">
+        ↑
+    </button>
     <script src="assets/js/main.js"></script>
 </body>
 </html> 
