@@ -564,4 +564,25 @@ input[type="number"]::-webkit-inner-spin-button {
 /* Estilizar quando for jogo fora */
 .result-fora {
     border-left: 4px solid #DC143C; /* Vermelho crimson para jogos fora */
+}
+
+.desfalques-campo {
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.desfalques-input {
+    width: 60px;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.desfalques-input::-webkit-outer-spin-button,
+.desfalques-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 } 

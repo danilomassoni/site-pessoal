@@ -31,6 +31,15 @@
                         <option value="fora">Fora</option>
                     </select>
                 </div>
+                <div class="desfalques-campo">
+                    <label>Desfalques importantes:</label>
+                    <input type="number" 
+                           id="teamADesfalques" 
+                           class="desfalques-input" 
+                           min="0" 
+                           value="0"
+                           onchange="calculateProbabilities()">
+                </div>
                 <div class="results-input">
                     <p>Insira os últimos 10 resultados:</p>
                     <div class="results-form"></div>
@@ -61,6 +70,15 @@
                         <option value="fora">Fora</option>
                         <option value="casa">Casa</option>
                     </select>
+                </div>
+                <div class="desfalques-campo">
+                    <label>Desfalques importantes:</label>
+                    <input type="number" 
+                           id="teamBDesfalques" 
+                           class="desfalques-input" 
+                           min="0" 
+                           value="0"
+                           onchange="calculateProbabilities()">
                 </div>
                 <div class="results-input">
                     <p>Insira os últimos 10 resultados:</p>
