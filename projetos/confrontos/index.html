@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de Confrontos | Danilo Massoni</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Análise de Confrontos</h1>
+        <div class="teams-container">
+            <div id="teamA" class="team-input">
+                <h2>Time A</h2>
+                <input type="text" id="teamAName" placeholder="Nome do Time A" class="team-name-input">
+                <div class="position-inputs">
+                    <div class="position-field">
+                        <label>Posição atual:</label>
+                        <input type="number" class="position-input" min="1" placeholder="Posição">
+                    </div>
+                    <div class="position-field">
+                        <label>Total de times:</label>
+                        <input type="number" class="total-teams" min="1" placeholder="Total">
+                    </div>
+                </div>
+                <div class="mando-campo">
+                    <label>Mando de Campo:</label>
+                    <select id="teamAMando" class="mando-select" onchange="calculateProbabilities()">
+                        <option value="casa">Casa</option>
+                        <option value="fora">Fora</option>
+                    </select>
+                </div>
+                <div class="results-input">
+                    <p>Insira os últimos 10 resultados:</p>
+                    <div class="results-form"></div>
+                    <div class="button-group">
+                        <button onclick="addResultRow('teamA')" class="add-btn">+ Adicionar Resultado</button>
+                        <button onclick="clearResults('teamA')" class="clear-btn">Limpar Resultados</button>
+                        <button onclick="clearAll('teamA')" class="clear-all-btn">Limpar Tudo</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="teamB" class="team-input">
+                <h2>Time B</h2>
+                <input type="text" id="teamBName" placeholder="Nome do Time B" class="team-name-input">
+                <div class="position-inputs">
+                    <div class="position-field">
+                        <label>Posição atual:</label>
+                        <input type="number" class="position-input" min="1" placeholder="Posição">
+                    </div>
+                    <div class="position-field">
+                        <label>Total de times:</label>
+                        <input type="number" class="total-teams" min="1" placeholder="Total">
+                    </div>
+                </div>
+                <div class="mando-campo">
+                    <label>Mando de Campo:</label>
+                    <select id="teamBMando" class="mando-select" onchange="calculateProbabilities()">
+                        <option value="fora">Fora</option>
+                        <option value="casa">Casa</option>
+                    </select>
+                </div>
+                <div class="results-input">
+                    <p>Insira os últimos 10 resultados:</p>
+                    <div class="results-form"></div>
+                    <div class="button-group">
+                        <button onclick="addResultRow('teamB')" class="add-btn">+ Adicionar Resultado</button>
+                        <button onclick="clearResults('teamB')" class="clear-btn">Limpar Resultados</button>
+                        <button onclick="clearAll('teamB')" class="clear-all-btn">Limpar Tudo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="analysis-container">
+            <h2>Análise do Confronto</h2>
+            <button onclick="calculateProbabilities()" class="calculate-btn">Calcular Probabilidades</button>
+            <div class="probability-display">
+                <div class="team-probability">
+                    <h3 id="teamANameDisplay">Time A</h3>
+                    <div class="probability-bar">
+                        <div id="teamAProbability" class="probability-fill"></div>
+                        <span id="teamAPercentage">0%</span>
+                    </div>
+                </div>
+                <div class="team-probability">
+                    <h3>Empate</h3>
+                    <div class="probability-bar">
+                        <div id="drawProbability" class="probability-fill draw"></div>
+                        <span id="drawPercentage">0%</span>
+                    </div>
+                </div>
+                <div class="team-probability">
+                    <h3 id="teamBNameDisplay">Time B</h3>
+                    <div class="probability-bar">
+                        <div id="teamBProbability" class="probability-fill"></div>
+                        <span id="teamBPercentage">0%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
