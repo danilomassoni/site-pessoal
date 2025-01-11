@@ -28,10 +28,6 @@ class ConfrontoAnalyzer {
         const positionScore = totalTeams ? (totalTeams - currentPosition + 1) / totalTeams : 0.5;
         const mandoBonus = isMandante ? 1.2 : 1.0; // 20% de bônus jogando em casa
         
-        // Penalidade por desfalques
-        const desfalques = parseInt(document.getElementById(`team${results === this.getResults('teamA') ? 'A' : 'B'}Desfalques`).value) || 0;
-        const desfalquesPenalty = Math.max(0.6, 1 - (desfalques * 0.1)); // Cada desfalque reduz 10% do score, mínimo de 60%
-        
         return results.reduce((score, result, index) => {
             const weight = (10 - index) / 10;
             
@@ -39,10 +35,12 @@ class ConfrontoAnalyzer {
             switch(result.result) {
                 case 'V': 
                     points = 3;
+                    // Bônus extra para vitória fora de casa
                     if (result.mando === 'fora') points *= 1.3;
                     break;
                 case 'E': 
                     points = 1;
+                    // Bônus para empate fora de casa
                     if (result.mando === 'fora') points *= 1.2;
                     break;
                 default: points = 0;
@@ -50,14 +48,16 @@ class ConfrontoAnalyzer {
             
             const saldoGols = result.golsPro - result.golsContra;
             const golsBonus = saldoGols * 0.2;
+            
             const golsProBonus = result.golsPro * 0.1;
+            
             const opponentPositionBonus = this.calculateOpponentPositionBonus(
                 result.opponentPosition,
                 totalTeams
             );
             
             return score + ((points + golsBonus + golsProBonus + opponentPositionBonus) * weight * positionScore);
-        }, 0) * mandoBonus * desfalquesPenalty; // Aplicar bônus de mando e penalidade de desfalques
+        }, 0) * mandoBonus; // Multiplicar pelo bônus do mando de campo atual
     }
 
     calculateOpponentPositionBonus(opponentPosition, totalTeams) {
@@ -123,16 +123,18 @@ class ConfrontoAnalyzer {
     displayWeightInfo() {
         const infoDiv = document.getElementById('weightInfo') || this.createWeightInfoDiv();
         
+        const weights = Array.from({length: 10}, (_, i) => {
+            const weight = ((10 - i) / 10) * 100;
+            return `${i + 1}º resultado: ${weight.toFixed(1)}% do peso total`;
+        });
+
         infoDiv.innerHTML = `
             <h4>Peso dos Resultados</h4>
             <p>Resultados mais recentes têm maior influência no cálculo:</p>
             <ul>
-                ${Array.from({length: 10}, (_, i) => {
-                    const weight = ((10 - i) / 10) * 100;
-                    return `<li>${i + 1}º resultado: ${weight.toFixed(1)}% do peso total</li>`;
-                }).join('')}
+                ${weights.map(w => `<li>${w}</li>`).join('')}
             </ul>
-            <h4>Bônus e Penalidades</h4>
+            <h4>Bônus no Cálculo</h4>
             <ul>
                 <li>Vitória: 3 pontos</li>
                 <li>Empate: 1 ponto</li>
@@ -140,10 +142,12 @@ class ConfrontoAnalyzer {
                 <li>Cada gol marcado: +0.1 ponto</li>
                 <li>Posição na tabela: até 100% de bônus</li>
                 <li>Posição do adversário: até 50% de bônus</li>
+            </ul>
+            <h4>Bônus de Mando de Campo</h4>
+            <ul>
                 <li>Jogando em casa: +20% no score total</li>
-                <li>Vitória fora: +30% nos pontos</li>
-                <li>Empate fora: +20% nos pontos</li>
-                <li>Cada desfalque: -10% no score total</li>
+                <li>Vitória fora de casa: +30% nos pontos</li>
+                <li>Empate fora de casa: +20% nos pontos</li>
             </ul>
         `;
     }

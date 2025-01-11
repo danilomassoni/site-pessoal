@@ -585,4 +585,47 @@ input[type="number"]::-webkit-inner-spin-button {
 .desfalques-input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.retrospecto-campo {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #f8f8f8;
+    border-radius: 4px;
+}
+
+.retrospecto-inputs {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin: 0.5rem 0;
+}
+
+.retrospecto-gols {
+    width: 50px;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.retrospecto-list {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.momento-campo,
+.clima-campo {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #f8f8f8;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.momento-campo select,
+.clima-campo select {
+    width: 200px;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
 } 
