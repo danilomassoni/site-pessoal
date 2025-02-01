@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist STEAM</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Checklist STEAM</h1>
+        <label>STEAM é uma abordagem educacional que integra Ciência (Science), Tecnologia (Technology), Engenharia (Engineering), Artes (Arts) e Matemática (Mathematics) para estimular o aprendizado baseado em projetos, resolução de problemas e criatividade.</label>
+        <label>O objetivo é preparar os estudantes para desafios do mundo real, promovendo um aprendizado mais ativo e envolvente. 🚀</label>
+        <form id="steamChecklist">
+            <div class="category">
+                <h2>1. Integração de Disciplinas STEAM - (Marque pelo menos 1) </h2>
+                <label><input type="checkbox" name="disciplina"> Minha aula conecta com pelo menos duas áreas do STEAM (Ciências, Tecnologia, Engenharia, Artes e Matemática). </label>
+                <label><input type="checkbox" name="disciplina"> Os alunos devem aplicar conceitos de diferentes discilpinas para resolver desafios. </label>
+                <label><input type="checkbox" name="disciplina"> O conteúdo explora pelo menos um problema do mundo real que exige um olhar interdisciplinar. </label>
+            </div>
+            
+            <div class="category">
+                <h2>2. Aprendizagem Baseada em Problemas e Projetos - (Marque pelo menos 1) </h2>
+                <label><input type="checkbox" name="problema"> A aula apresenta um problema do mundo real para os alunos investigarem e resolverem. </label>
+                <label><input type="checkbox" name="problema"> Os alunos devem participar de um projeto projeto prático, desenvolvendo soluções para desafios concretos. </label>
+                <label><input type="checkbox" name="problema"> A atividade envolve prototipagem, testes e melhorias ao longo de todo o processo. </label>
+            </div>
+            
+            <div class="category">
+                <h2>3. Uso da Tecnologia e Ferramentas Digitais - (Marque pelo menos 1) </h2>
+                <label><input type="checkbox" name="tecnologia"> Estou utilizando alguma tecnologia como porgramação, robótica, impressão 3D, design ou aplicativos digitais na aula. </label>
+                <label><input type="checkbox" name="tecnologia"> Os alunos precisam pesquisar, coletar dados ou utilizar ferramentas tecnológicas para desenvolver a atividade. </label>
+                <label><input type="checkbox" name="tecnologia"> A aula envolve o uso de simulações ou software que auxiliam na resolução de problema. </label>
+            </div>
+            
+            <div class="category">
+                <h2>4. Criatividade e Pensamento Crítico - (Marque pelo menos 1) </h2>
+                <label><input type="checkbox" name="criatividade"> Os alunos criam um produto, protótipo ou solução a partir do problema proposto.</label>
+                <label><input type="checkbox" name="criatividade"> A aula permite que os alunos explorem diferentes soluções e pensem fora da caixa.</label>
+                <label><input type="checkbox" name="criatividade"> OS alunos fazem brainstorming, dialogam e avaliam difernetes perspectivas antes de tomar decisões.</label>
+            </div>
+
+            <div class="category">
+                <h2>5. Aprendizagem Mão na Massa e Experimentação – (Marque pelo menos 1)</h2>
+                <label><input type="checkbox" name="experimentacao">A aula envolve construção, experimentação ou teste de hipóteses na prática.</label>
+                <label><input type="checkbox" name="experimentacao">Os alunos manipulam materiais e ferramentas para desenvolver soluções.</label>
+                <label><input type="checkbox" name="experimentacao">A atividade incentiva a exploração e adaptação de ideias com base em tentativa e erro.</label>
+            </div>
+           
+            <div class="category">
+                <h2>6. Trabalho Colaborativo - (Marque pelo menos 1) </h2>
+                <label><input type="checkbox" name="colaboracao"> Os alunos trabalham em duplas ou grupos para resolver um problema.</label>
+                <label><input type="checkbox" name="colaboracao"> Há momentos estruturados para os alunos discutirem, apresentarem ideias e compartilharem feedback.</label>
+                <label><input type="checkbox" name="colaboracao"> A atividade envolve um debate ou apresentação de resultados para a turma ou para um público externo.</label>
+            </div>
+
+            <div class="category">
+                <h2>7. Reflexão e Aprimoramento – (Marque pelo menos 1)</h2>
+                <label><input type="checkbox" name="aprimoramento">Os alunos analisam os erros e fazem melhorias em seus projetos ou soluções.</label>
+                <label><input type="checkbox" name="aprimoramento">A aula inclui um momento de feedback estruturado para aprimorar o aprendizado.</label>
+                <label><input type="checkbox" name="aprimoramento">Os alunos documentam o processo e explicam as decisões que tomaram.</label>
+            </div>
+
+            <div class="category">
+                <h2>8. Impacto no Mundo Real e Sustentabilidade – (Marque pelo menos 1)</h2>
+                <label><input type="checkbox" name="impacto">O problema ou projeto abordado tem impacto social, ambiental ou comunitário.</label>
+                <label><input type="checkbox" name="impacto">Os alunos são incentivados a pensar em soluções sustentáveis ou acessíveis.</label>
+                <label><input type="checkbox" name="impacto">A atividade relaciona o aprendizado com carreiras e desafios do século XXI.</label>
+            </div>
+            
+            <button type="button" onclick="verificarChecklist()">Verificar Checklist</button>
+            <p id="result"></p>
+            <div id="suggestions" class="suggestions"></div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+    
+    
+</body>
+</html>
